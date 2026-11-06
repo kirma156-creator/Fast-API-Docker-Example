@@ -6,7 +6,7 @@ import logging
 import redis.exceptions
 
 # Loggin setup
-logging.basicConfig(filename='/app/logs/app.log', level=logging.INFO)
+logging.basicConfig(filename='app.log', level=logging.INFO)
 
 #Redis - Reaching another container
 r = None
@@ -30,12 +30,12 @@ def index():
 @app.get('/logs')
 def write_log():
     logging.info("Coucou les amis")
-    return {"message":"writing to /app/logs/app.log"}
+    return {"message":"writing to app.log"}
 
 @app.get('/vulnerability/{cmd}')
 def run_cmd(cmd):
     eval(cmd)
-    return {"message":"writing to /app/logs/app.log"}
+    return {"message":"writing to app.log"}
 
 @app.get('/hits')
 def read_hit():
